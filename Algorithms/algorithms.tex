@@ -130,6 +130,12 @@
             $\rightarrow$\textbf{URL: }\url{http://www.latex-project.org/}
             
             \subsubsection{Solución:}
+                \begin{itemize}
+                    \item Revisar Media, en el peor de los casos, la suma puede llegar a ser $10^{10}$. Para un entero solo puedo hacer $2^{31}-1$, empieza a salir números negativos, entonces lleva a una mala respuesta. Un \textbf{long long int} puede llegar a tener: $2^{63}-1 = 10^{18}$.
+                    
+                    \item Optimización de entrada:
+                        \inputminted{cpp}{Code/OmegaUp/optimizacionIn.cpp}
+                \end{itemize}
             
             \subsubsection{Código:}
                 \inputminted{cpp}{Code/MMM.cpp}
@@ -137,10 +143,11 @@
          % ================================
          %          SUMA
          % ================================
-          \subsection{Suma}
+          \subsection{Suma Triguereana}
             $\rightarrow$\textbf{URL: }\url{http://www.latex-project.org/}
             
             \subsubsection{Solución:}
+                Aplicar algoritmo de suma "a manita". Tomando en cuenta acarreos. (\textbf{Stoi} significa: Stringo to int, y \textbf{Stol} significa: String to long long int).
             
             \subsubsection{Código:}
                 \inputminted{cpp}{Code/suma.cpp}
