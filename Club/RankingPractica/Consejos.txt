@@ -1,0 +1,37 @@
+1. Leer todos los problemas. 
+	Dividir el problemset en los integrantes del equipo. 
+	No leer el primero todos juntos. 
+	Identificar los ṕroblemas fáciles. 
+
+2. Realizar una tabla. 
+	Una fila para cada problema. 
+	-> Quién ya lo leyó.
+	-> Idea (Indicamos de qué creemos que trata el problema.)
+	-> Status (Wrong Answer, AC, ...)
+
+3. Cuando ya no sepamos qué atacar de forma individual, hacer una reunión y contarse los problemas. 
+	En todo caso atacar entre los tres un problema. 
+	Hacer esto en la última hora. 
+
+4. Llevar una calculadora básica. 
+	Aprender a usar Python como calculadora de escritorio es una buena idea. 
+
+5. Armar tu propio Reference. 
+	Cualquier cosa impresa que nos sea de ayuda. 
+	Algoritmos. 
+	Llevar tanto código como fórmulas matemáticas. 
+
+	Por ejemplo, si tenemos problemas con lectura infinita, hacer el código e imprimirlo. 
+	O si nos olvidamos de las funciones de los vectores, ponerlas. 
+
+6. Utilizar la imagen de la ICPC que te da el entorno en el que te vas a desarrollar. 
+
+7. No correr programas con complejidad alta puesto que se usa LiveCD y puede morir el sistema operativo. 
+
+8. Llevar algo de snacks. 
+
+9. No desvelarse un día antes. 
+
+10. El concurso empieza a las 12:00. Nos piden llegar a las 11:30. 
+	
+12. El concurso se hace sincronizado, por ello, habrá equipos que no identifiquemos en el lugar. 
