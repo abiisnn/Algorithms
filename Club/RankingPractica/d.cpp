@@ -1,31 +1,24 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+
 using namespace std;
 
 long long cuentaImpar(vector<long long> v) {
 	long long contador = 0;
-	for(int i = 0; i < v.size; i ++) {
-		if(v[i] && 1 && (v[i] != -1))
+	for(int i = 0; i < v.size(); i ++) {
+		if(v[i] & 1)
 			contador++;
 	}
 	return contador;
 }
-long long cuentaPar(vector<long long> v) {
-	long long contador = 0;
-	for(int i = 0; i < v.size; i ++) {
-		if(!(v[i] && 1) && (v[i] != -1))
-			contador++;
-	}
-	return contador;
-}
-
-vector <long long> t; 
 	
 int main () {
 	long long contador, tesoro, llave, aux;
 	cin >> tesoro >> llave;
 	vector <long long> l;
+	vector <long long> t; 
+
 	int isPar = 1;
-	long long impar = 0, par = 0;
+	long long imparT = 0, parT = 0, imparL = 0, parL = 0;
 
 	// Recibir datos
 	for(int i = 0; i < tesoro; i++) {
@@ -38,13 +31,13 @@ int main () {
 	}
 
 	contador = 0;
-	for(int i = 0 ; i < l.size(); i ++) {
-		if(l[i] && 1) {
-			impar = cuentaImpar(t);
 
-		}
-		impar = cuentaImpar(t);
-		par = cuentaPar(t);
-	}
+	imparT = cuentaImpar(t);
+	parT = t.size() - imparT;
+	imparL = cuentaImpar(l);
+	parL = l.size() - imparL;
+
+	contador = min(imparT, parL);
+	contador += min(imparL, parT);
 	cout << contador << endl;
 }
