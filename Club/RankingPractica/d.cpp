@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -40,4 +40,5 @@ int main () {
 	contador = min(imparT, parL);
 	contador += min(imparL, parT);
 	cout << contador << endl;
+	return 0;
 }
