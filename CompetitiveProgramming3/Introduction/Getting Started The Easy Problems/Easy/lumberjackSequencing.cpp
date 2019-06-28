@@ -4,44 +4,60 @@ using namespace std;
 #define endl '\n'
 #define optimizar_io ios_base::sync_with_stdio(0); cin.tie(0);
 
+void verifyOrder(vector<int> v, int begin, int end) {
+	int aux, num, verify;
+	verify = 0;
+	if(!begin){
+		aux = v[0];
+		for(int i = 1; i < 10; i++) {
+			num = v[i];
+			if(num < aux) {
+				verify = 1;
+				break;
+			}
+			aux = num;
+		}
+		if(verify) 
+			cout << "Unordered" << endl;
+		else 
+			cout << "Ordered" << endl;
+	} else {
+		aux = v[9];
+		for(int i = 8; i >= 0; i--) {
+			num = v[i];
+			if(num < aux) {
+				verify = 1;
+				break;
+			}
+			aux = num;
+		}
+		if(verify) 
+			cout << "Unordered" << endl;
+		else 
+			cout << "Ordered" << endl;
+	}
+}
+
 int main() {
 	int tc, number;
-	int one, second, first;
+	int b, end;
 	int i, verify;
-
+	
 	cin >> tc;
 	cout << "Lumberjacks:" << endl;
 	while(tc) {
-		cin >> one >> second;
-		verify = 0;
-		if(one > second) {
-			cout << one << " > " << second << endl;
-			verify = 1;
+		vector<int> v;
+		for(i = 0; i < 10; i++) {
+			cin >> number;
+			v.push_back(number);
 		}
-
-		if(verify) {
-			for(i = 0; i < 7; i++) {
-				cin >> first;
-				cin >> number;
-				if(number > first) {
-					cout << "Unordered" << endl; 
-					break;
-				}
-				first = number;
-			}
-			cout << "Ordered" << endl; 
-		}
-		else {
-			for(i = 0; i < 7; i++) {
-				cin >> first;
-				cin >> number;
-				if(number < first) {
-					cout << "Unordered" << endl; 
-				}
-				first = number;
-			}
-			cout << "Ordered" << endl; 
-		}
+		b = 0;
+		end = 9;
+		if(v[0] > v[1]) {
+			b = 9;
+			end = 0;
+		} 
+		verifyOrder(v, b, end);
 		tc--;
 	}
 }
