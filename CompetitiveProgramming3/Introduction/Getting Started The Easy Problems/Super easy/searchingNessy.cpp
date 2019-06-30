@@ -5,9 +5,8 @@ using namespace std;
 #define optimizar_io ios_base::sync_with_stdio(0); cin.tie(0);
 
 int piso(int a, int b) {
-	if((a >= 0 &&  b > 0) || (a < 0 && b < 0)) {
+	if((a >= 0 &&  b > 0) || (a < 0 && b < 0)) 
 		return a / b;
-	} 
 	else {
 		if(a % b == 0) return a / b;
 		else return a / b - 1;
