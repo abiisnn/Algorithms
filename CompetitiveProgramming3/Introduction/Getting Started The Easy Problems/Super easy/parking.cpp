@@ -11,6 +11,7 @@ int main() {
 	for(i = 0; i < tc; i++) {
 		cin >> n;
 		if(n == 1) {
+			cin >> number;
 			cout << "0" << endl;
 		}
 		else {
@@ -20,13 +21,8 @@ int main() {
 				v.push_back(number);
 			}
 			sort(v.begin(), v.end());	
-			for(j = 0; j < v.size() - 1; j++) {
-				number = v[j];
-				aux = v[j + 1];
-				number = aux - number;
-				sum += number; 
-			}		
-			sum += v[v.size() - 1] - v[0];
+			sum = v[n - 1] - v[0];		
+			sum *= 2;	
 			cout << sum << endl;
 		}
 		sum = 0;
