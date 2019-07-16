@@ -1,3 +1,4 @@
+// https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=609&page=show_problem&problem=514
 #include<bits/stdc++.h>
 using namespace std;
 #define endl '\n'
@@ -5,44 +6,30 @@ using namespace std;
 
 int main() {
 	double H, U, D, F;
-	int day, flag;
+	int day;
 	double factor;
 	double initialHeight, distanceClimbed, heightClimbing, heightSliding;
 
-	cin >> H;
-	while(H) {
+	while(cin >> H, H) {
 		cin >> U >> D >> F;
 		factor = (F * U) / 100;
-		day = 1; flag = 0;
+		day = 0; 
 		initialHeight = 0;
-		distanceClimbed = U;
-		heightClimbing = initialHeight + distanceClimbed;
-		heightSliding = heightClimbing - D;
-		// cout << "day \t"  << "initialHeight \t" << "distanceClimbed \t" << "heightClimbing \t" << "heightSlidinge" << endl;
-		// cout <<  day << "\t"  << initialHeight << "\t" << distanceClimbed << "\t" << heightClimbing << "\t" << heightSliding << endl;
+		heightClimbing = 0;
 
-		while(1) {
-			day++;
-			initialHeight = heightSliding;
-			distanceClimbed -= factor;
+		while(initialHeight >= 0 && heightClimbing <= H) {
+			distanceClimbed = U - (factor * day);
+			if(distanceClimbed < 0) 
+				distanceClimbed = 0; 
 			heightClimbing = initialHeight + distanceClimbed;
-			heightSliding = heightClimbing - D; 
+			initialHeight = heightClimbing - D; 
+			day++;
 			// cout <<  day << "\t"  << initialHeight << "\t" << distanceClimbed << "\t" << heightClimbing << "\t" << heightSliding << endl;
-
-			if(heightClimbing > H) {
-				flag = 1;
-				break;
-			}
-			else if((distanceClimbed < 0) || (heightSliding < 0)) {
-				flag = 0;
-				break;
-			}
 		}
-		if(flag)
-			cout << "success on day " << day << endl;
-		else 
+		if(initialHeight < 0)
 			cout << "failure on day " << day << endl;
+		else 
+			cout << "success on day " << day << endl;
 
-		cin >> H;
 	}
 }
