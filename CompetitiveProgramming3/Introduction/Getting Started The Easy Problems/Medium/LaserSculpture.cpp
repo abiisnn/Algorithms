@@ -8,25 +8,23 @@ int main() {
 
 	while(cin >> A, A != 0) {
 		cin >> C;
-		vector<int> v(C, 0);
+		vector<int> v;
 		for(i = 0; i < C; i++) {
 			cin >> number;
-			v[i] = number;
+			v.push_back(number);
 		}
-		block = 0;
-		ant = v[0];
-		max = ant;
+		ant = v[0]; max = ant; block = 0;
 		for(i = 1; i < C; i++) {
-			cout << "Block: " << block << endl;
-			if(v[i] >= max) {
+			if((v[i] > ant) && (v[i] > max)) 
 				block += v[i] - max;
-			}
-			else if(ant > v[i]) {
-				block += ant - v[i];
-			}
+			else if(ant > v[i])
+				block += ant -i];
 			if(v[i] > max)
 				max = v[i];
+			ant = v[i];
 		}
+		if(max != A)
+			block += A - max;
 		cout << block << endl;
 	}
 }
