@@ -1,3 +1,4 @@
+// NO HA SALIDO
 // https://codeforces.com/contest/1196/problem/A
 #include<bits/stdc++.h>
 #include <math.h>
