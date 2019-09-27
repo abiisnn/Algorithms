@@ -40,19 +40,19 @@ int bfs(Graph* from, Graph* to, vector<bool> &visited) {
 	return -1;
 }
 
-// bool dfs(Graph* from, Graph* to, vector<bool> &visited) {
-// 	int flag = 0;
-// 	if (from == to) return true;
-// 	if(visited[from->index]) return false;
-// 	if(!visited[from->index])
-// 		visited[from->index] = true;
-// 	for (int i = 0; i < from->neighbor.size(); i++) {
-// 		bool ans = dfs(from->neighbor[i], to, visited);
-// 		if(ans) flag = 1;
-// 	}
-// 	if(flag) return true;
-// 	else return false;
-// }
+bool dfs(Graph* from, Graph* to, vector<bool> &visited) {
+	int flag = 0;
+	if (from == to) return true;
+	if(visited[from->index]) return false;
+	if(!visited[from->index])
+		visited[from->index] = true;
+	for (int i = 0; i < from->neighbor.size(); i++) {
+		bool ans = dfs(from->neighbor[i], to, visited);
+		if(ans) flag = 1;
+	}
+	if(flag) return true;
+	else return false;
+}
 
 int main() {
 	int nNodes, idGraph, nNeighbor, neigh;
@@ -85,7 +85,6 @@ int main() {
 	// if (bfs(nodes[start], nodes[end], visited)) 
 	// 	cout << "Yes" << endl;
 	// else cout << "NO" << endl;
-
 
 	// if (dfs(nodes[start], nodes[end], visited)) 
 	// 	cout << "Yes" << endl;
