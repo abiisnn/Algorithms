@@ -1,3 +1,4 @@
+# By Teacher Somoza
 num = 0
 cnt = 0
 ok = False

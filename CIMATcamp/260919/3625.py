@@ -1,3 +1,4 @@
+# By Teacher Somoza
 # No entra en tiempo XD
 # Posiciones P son los numeros de Fibo desplazado
 c = input()

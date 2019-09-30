@@ -1,3 +1,4 @@
+# By Teacher Somoza
 t = input()
 for t in range(1, t+1):
 	n = input()

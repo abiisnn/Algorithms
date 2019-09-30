@@ -1,3 +1,4 @@
+# By Teacher Somoza
 crib = [True]*31624
 for i in range(2, len(crib)):
 	if crib[i]:

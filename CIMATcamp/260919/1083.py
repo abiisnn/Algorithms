@@ -1,3 +1,4 @@
+# By Teacher Somoza
 # PROBLEMA 9
 k, l, m = map(int, raw_input().split())
 ns = map(int, raw_input().split)

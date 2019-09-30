@@ -1,3 +1,4 @@
+# By Teacher Somoza
 dp = [[[False]*101 for _ in range(101)] for _ in range(101)]
 
 for i in range(101):
