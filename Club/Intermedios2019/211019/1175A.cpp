@@ -1,19 +1,24 @@
+// https://codeforces.com/problemset/problem/1175/A
 #include<bits/stdc++.h>
 using namespace std;
 
-long long int cont(long long int a, long long int b) {
-	long long int c = 0;
-	while( b != 0) {
-		long long int r = a % b;
-		a = b;
-		b = r;
-		c++;
+typedef long long int lli;
+
+lli cont(lli a, lli b) {
+	lli cont = 0;
+	lli aux = 0;
+	while(a) {
+		aux = (a % b);
+		a -= aux;
+		a /= b;
+		cont += aux;
+		cont++;
 	}
-	return c;
+	return cont - 1;
 }
 int main() {
 	int tc;
-	long long int n, k;
+	lli n, k;
 	cin >> tc;
 	while(tc--) {
 		cin >> n >> k;
