@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 	string srt, aux = "";
-	int i, bar = 0, x = 0, sum = 0, res = 0;
+	lli i, bar = 0, sum = 0, res = 0, x = 0;
 
 	while(cin >> srt) {
 		if(srt[0] == 124) bar += srt.size();
@@ -19,11 +19,12 @@ int main() {
 		    res = srt.size() - i - 2;
 		    if(res) sum += (res * x);
 		    else sum += x;
+			aux = "";
 		}			
 	}
 	sum += (bar * 42);
 	while((sum % 10) != 0) {
 		sum++;
 	}
-	cout << sum << ",-";
+	cout << sum << ",-" << endl;
 }
