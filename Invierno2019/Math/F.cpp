@@ -11,11 +11,6 @@ void fac(lli n) {
 		f[i] = (f[i - 1] * i) % MOD;
 	}
 }
-// lli combinacion(int n, int a, int b) {
-// 	lli inverso = (f[a] * f[b]) % MOD;
-// 	inverso = powerMod(inverso, MOD - 2) % MOD;
-// 	return (f[n] * inverso) % MOD;
-// }
 
 lli binPow(lli b, lli p) {
 	lli res = 1;
