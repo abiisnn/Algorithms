@@ -1,61 +1,73 @@
-// https://codeforces.com/contest/1294/problem/C
 #include<bits/stdc++.h>
 using namespace std;
-#define MAX 1000000001
 #define pb push_back
+#define mp make_pair
+#define MAX 10000005
 typedef long long int lli;
-set<lli> noPrimes;
-	
-void primes(lli n) {
-	//n++;
-	noPrimes.insert(0); noPrimes.insert(1);
-	for(lli i = 4; i <= n; i += 2) noPrimes.insert(i);
+
+int isPrime(lli &n) {
+	cout << "--------number: " << n << endl;
 	lli limit = sqrt(n);
-	
-	for(lli i = 3; i <= n; i += 2) {
-		if(noPrimes.count(i)) {
-			if(i <= limit)
-				for(int j = i * i; j <= n; j += 2 * i) noPrimes.insert(j);
+	int ans = 0;
+	int i = 0; 
+	for(i = 2; i <= limit; i++) {
+		if((n % i) == 0) {
+			ans = i; 
 		}
 	}
-}
-map<lli, lli> factor(lli n) {
-	map<lli, lli> f;
-	while(n > 1) {
-		if(noPrimes.count(n) == 1) {
-			int p = 2;
-			int r = 0;
-			while((n % p) == 0) {
-				n /= p;
-				r++;
-				f[p] = r;
-				p++;
-			}
-		}
-		else {
-			f[n] = 1;
-			break;
-		}
-	}
-	return f;
+	cout << "ans: " << ans << endl;
+	return ans;
 }
 
+void find(lli n) {
+	bool flag = true;
+	vector<lli> numbers(4, 0);
+	numbers[0] = isPrime(n);
+	if(numbers[0] == 0) {
+		cout << "NO" << endl; 
+	} else {
+		numbers[1] = isPrime(n);
+		lli aux = n % numbers[1];
+		if((numbers[1] == 0) && (() == 0)) {
+			cout << "NO" << endl;
+		} else {
+			numbers[2] = isPrime(n);
+			// cout << "----" << endl;
+			// cout << "a: " << a << " n: " << n << endl;
+			// cout << "b: " << b << " c: " << c << endl;
+			numbers[3] = n;
+			//sort(numbers.begin(), numbers.end());
+			for(int i = 0; i < 4; i++) {
+				cout << numbers[i] << " ";
+			}	cout << endl;
+			if((numbers[2] == 0)) {
+				if((numbers[0] != numbers[1]) && (numbers[1] != numbers[3]) && (numbers[3] != numbers[0])) {
+					cout << "YES" << endl;
+					cout << numbers[0] << " " << numbers[1] << " " << numbers[3] << endl;
+					cout << endl;
+				} else cout << "NO" << endl;
+			} else {
+				numbers[1] *= numbers[2];
+				if((numbers[0] != numbers[1]) && (numbers[1] != numbers[3]) && (numbers[3] != numbers[1])) {
+					cout << "YES" << endl;
+					cout << numbers[0] << " " << numbers[1] << " " << numbers[3] << endl;
+				} else cout << "NO" << endl;
+			}
+			// if((a != b) && (b != n) && (a != n) && (n != 1)) {
+			// 	cout << "YES" << endl;
+			// 	cout << a << " " << b << " " << n << endl;
+			// }
+			// else cout << "NO" << endl;
+		}
+	}
+}
 int main() {
 	ios_base::sync_with_stdio(0); cin.tie(0);
 	int t;
-	map<lli, lli> factors;
+	lli n, total, ans;
 	cin >> t;
-	primes(MAX);
-
-	cout << "-------------- SET" << endl;
-	for(auto &i: noPrimes) {
-		cout << i << " ";
-	} cout << endl << endl << endl;
-
-	factors = factor(t);
-	cout << "-------------- MAP" << endl;
-	for(auto &i: factors) {
-		cout << i.first << " " << i.second << endl;
+	while(t--) {
+		cin >> n;
+		find(n);	
 	}
-
 }
