@@ -1,40 +1,29 @@
-// NO HA SALIDO
-// https://codeforces.com/contest/1196/problem/A
+// https://codeforces.com/contest/1196/problem/B
 #include<bits/stdc++.h>
-#include <math.h>
 using namespace std;
-#define endl '\n'
 #define optimizar_io ios_base::sync_with_stdio(0); cin.tie(0);
-typedef long long ll;
+#define fore(i, a, b) for(int i = a; i < b; i++)
+#define fori(i, a, b) for(int i = a; i <= b; i++)
+#define endl '\n'
+#define pb push_back
+
+typedef long long int lli;
 
 int main() {
-	ll q, n, k;
-	ll i, j;
-	ll number, oddCont, res;
-	int flag;
+	optimizar_io
+	int i, k, n, q, aux;
 	cin >> q;
 	while(q--) {
 		cin >> n >> k;
-		vector<ll> odds;
-		oddCont = 0; flag = 0;
-		for(i = 0; i < n; i++) {
-			cin >> number;
-			if(number & 1) {
-				odds.push_back(number);
-				oddCont++;
-			}			
+		vector<lli> v;
+		fori(i, 1, n) {
+			cin >> aux;
+			if(aux & 1) v.pb(i);
 		}
-		if(oddCont >= k) {
-			res = oddCont - k;
-			if((res == 0) || ((res % k) == 0)) {
-				res = odds.size() / k;
-				cout << "YES" << endl;
-				for(i = odds.size() - 1; i >= 1; i -= res) 
-					cout << odds[i] << " ";
-				cout << n << endl;
-			} 
-			else cout << "NO" << endl;
-		}
-		else cout << "NO" << endl;
+		if((v.size() >= k) && !((v.size() - k) & 1)) {
+			cout << "YES" << endl;
+			fore(i, 0, k - 1) cout << v[i] << " ";
+			cout << n << endl;
+		} else cout << "NO" << endl;
 	}
 }
