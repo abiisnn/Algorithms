@@ -10,7 +10,6 @@ using namespace std;
 #define s second
 #define endl '\n'
 
-
 typedef long long int lli;
 
 int main() {
