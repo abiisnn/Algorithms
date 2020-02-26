@@ -77,7 +77,7 @@ int main() {
 		}
 	}
 
-	// Numerator
+	// Denominator
 	gcdAux = gcd;
 	for(int i = 0; i < facM.size(); i++) {
 		for(auto &j : facM[i]) {
