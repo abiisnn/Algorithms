@@ -1,3 +1,4 @@
+// Using binary search
 #include<bits/stdc++.h>
 using namespace std;
 #define optimizar_io ios_base::sync_with_stdio(0); cin.tie(0);
@@ -17,24 +18,26 @@ int main() {
 	optimizar_io
 
 	int n;
-	lli greater, sum, ineed, ans;
+	lli sum, ans, l, r, m;
 	cin >> n;
 
 	vector<lli> num(n, 0);
-	greater = 0;
-	sum = 0;
+	l = 0, sum = 0;
 	fore(i, 0, n) {
 		cin >> num[i];
-		if(num[i] > greater) greater = num[i];
+		if(num[i] > l) l = num[i];
 		sum += num[i]; 
 	} 
-	ineed = greater * (n - 1);
-	if(ineed >= sum) {
-		ans = greater;
-	} else {
-		ineed = sum - ineed;
-		ans = greater + floor(ineed / (n-1));
-		if(ineed % (n-1)) ans++;
+
+	r = 1LL << 32;
+	ans = -1;
+	while(l <= r) {
+		m = l + (r - l) / 2;
+		if((m * (n - 1)) >= sum) {
+			ans = m;
+			r = m - 1;
+		} 
+		else l = m + 1;
 	}
 	cout << ans << endl;
 }
