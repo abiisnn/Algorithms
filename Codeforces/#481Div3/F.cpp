@@ -24,7 +24,6 @@ int find(vector<lli> &a, lli target) {
 int main() {
 	optimizar_io
 	lli n, k, a, b;
-
 	cin >> n >> k;
 	map<lli, lli> bucket;
 	map<lli, lli> originalAns;	
@@ -52,10 +51,10 @@ int main() {
 		ans[i] = sumAcum[find(rSorted, r[i])];
 	}
 	fore(i, 0, k) {
-		cin >> a >> b;
-		if(ans[a - 1] > ans[b - 1]) {
+		cin >> a >> b;		
+		if(r[a - 1] > r[b - 1]) {
 			ans[a-1]--;
-		} else if(ans[b-1] > ans[a -1]) {
+		} else if(r[b-1] > r[a -1]) {
 			ans[b-1]--;
 		}
 	}
