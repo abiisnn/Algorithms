@@ -9,6 +9,7 @@ using namespace std;
 #define s second
 #define endl '\n'
 typedef long long int lli;
+
 int find(vector<lli> &a, lli target) {
 	lli l = 0, r = a.size()-1;
 	while(l <= r) {
