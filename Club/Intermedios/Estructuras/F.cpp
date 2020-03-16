@@ -11,30 +11,45 @@ using namespace std;
 #define endl '\n'
 typedef long long int lli;
 
-int pos(char a) {
-	return a - 97;
+void update(vector<set<int>> &m, char toUpdate, int i, char newChar) {
+	m[toUpdate - 'a'].erase(i);
+	m[newChar - 'a'].insert(i);
+}
+int query(vector<set<int>> &m,int l, int r) {
+	int ans = 0;
+	for(auto &i: m) {
+		auto it = i.lower_bound(l);
+		if(i.end() != it) {
+			int num = *(it);
+			if((num >= l) && (num <= r) && (i.size() > 0)) {
+				ans++;
+			}	
+		}
+	}
+	return ans;
 }
 
 int main() {
+	optimizar_io
 	string s;
-	vector<set<int>> letters;
-	int q, kind, l, r, pos;
+	int q, kind, l, r, index;
 	char c;
-	cin >> s >> q;
-	
-	set<int> pos;
-	fore(i, 97, 123) {
-		letters.pb(pos);
-	}
 
+	cin >> s >> q;
+	vector<set<int>> pos(26);
+
+	for(int i = 0; i < s.size(); i++) {
+		pos[s[i] - 'a'].insert(i);
+	}
 	while(q--) {
 		cin >> kind;
-		if(kind == 1) { // Update
-			cin >> pos >> c;
-			update(pos, c);
+		if(kind == 1) {
+			cin >> index >> c;
+			update(pos, s[index-1], index-1, c);
+			s[index -1] = c;
 		} else {
 			cin >> l >> r;
-			cout << query(l, r) << endl;
+			cout << query(pos, l-1, r-1) << endl;
 		}
 	}
 }

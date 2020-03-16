@@ -1,7 +1,4 @@
-/* 
-
-problem: find the lowest number strictly greater than the current number, just using the given numbers
-
+/* Problem: find the lowest number strictly greater than the current number, just using the given numbers.
 in:  [1, 2, 3]  
 out: [1, 3, 2]
 
@@ -13,9 +10,8 @@ in: [2, 3, 4, 8, 6, 3, 4]
 out:[2, 3, 4, 8, 6, 4, 3]
 
 in: [1, 3, 2]
-out:[2, 3, 1]
+out:[2, 3, 1]       */
 
-*/
 #include<bits/stdc++.h>
 using namespace std;
 
