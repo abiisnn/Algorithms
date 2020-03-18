@@ -15,28 +15,23 @@ typedef long double ld;
 const double PI = acos(-1.0);
 ld eps = 1e-9;
 
-bool winFriend(int players, int sum) {
-	bool ans = false;
-	if((sum % players)) ans = true;
-	return ans;
-}
-
 int main() {
 	optimizar_io
-
-	int n, aux; 
-	int totalFinger = 0;
+	int n;
 	cin >> n;
-	fore(i, 0, n) {
-		cin >> aux;
-		totalFinger += aux;
-	}
+	vector<int> num(n, 0);
+	fore(i, 0, n) cin >> num[i];
 
-	int ans = 0;
-	fore(i, 1, 6) {
-		if(winFriend(n+1, totalFinger + i - 1)) {
-			ans++;
+	int mi, ma, cont;
+	mi = num[0], ma = num[0], cont = 0;	
+	fore(i, 1, n) {
+		if(num[i] > ma) {
+			ma = num[i];
+			cont++;
+		} else if(num[i] < mi) {
+			mi = num[i];
+			cont++;
 		}
 	}
-	cout << ans << endl;
+	cout << cont << endl;
 }

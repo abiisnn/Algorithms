@@ -4,59 +4,44 @@ using namespace std;
 #define fore(i, a, b) for(int i = a; i < b; i++)
 #define fori(i, a, b) for(int i = a; i <= b; i++)
 #define pb push_back
+#define popb pop_back
 #define mk make_pair
 #define f first
 #define s second
 #define endl '\n'
-#define MAX 1005
-bool matrix[1005][1005];
-vector<pair<int, int>> moves;
+#define MAX 60
+typedef long long int lli;
+typedef long double ld;
+const double PI = acos(-1.0);
+ld eps = 1e-9;
 
-bool check(int X, int Y) {
-	bool ans = true;
-	int x, y;
-	fore(i, 0, 4) {
-		x = X + moves[i].first;
-		y = Y + moves[i].second;
-		cout << x << " " << y << endl;
-		if((x >= 0) && (y >= 0) && (x < MAX) && ( y < MAX)) {
-			if(!matrix[x][y]) {
-				ans = false;
-			}	
-		} else ans = false;
+bool isSuperPoint(vector<pair<int, int>> &points, int p) {
+	bool right = false, left = false, lower = false, upper = false;
+	bool ans = false;
+	int x = points[p].first, y = points[p].second;
+	fore(i, 0, points.size()) {
+		if(i == p) continue;
+		if((points[i].first > x) && (points[i].second == y)) right = true;
+		if((points[i].first < x) && (points[i].second == y)) left = true;
+		if((points[i].first == x) && (points[i].second < y)) lower = true;
+		if((points[i].first == x) && (points[i].second > y)) upper = true;		
 	}
+	if(right && left && lower && upper) ans = true;
 	return ans;
 }
-void fillMoves() {
-	int x[] = {0, -1, 0, 1};
-	int y[] = {1, 0, -1, 0};
-	fore(i, 0, 4){
-		moves.pb(mk(x[i], y[i]));	
-	}
-	
-}
-void fillMatrix() {
-	fore(i, 0, MAX) {
-		fore(j, 0, MAX) {
-			matrix[i][j] = false;
-		}
-	}
-}
 int main() {
-	int n, x, y, ans;
+	optimizar_io
+	int n, x, y;
 	cin >> n;
-	vector<pair<int, int>> p;
-	fillMoves();
-	fillMatrix();
+
+	vector<pair<int, int>> points(n);
 	fore(i, 0, n) {
 		cin >> x >> y;
-		p.pb(mk(x, y));
-		matrix[x][y] = true;
+		points[i] = mk(x, y);
 	}
-	ans = 0;
-	for(auto &i: p) {
-		cout << "---------> " << i.first << " " << i.second << endl;
-		if(check(i.first, i.second)){
+	int ans = 0;
+	fore(i, 0, n) {
+		if(isSuperPoint(points, i)) {
 			ans++;
 		}
 	}
