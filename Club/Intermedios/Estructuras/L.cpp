@@ -9,33 +9,59 @@ using namespace std;
 #define f first
 #define s second
 #define endl '\n'
+#define MAX 100005
 typedef long long int lli;
 
+vector<int> bucket(MAX, 0);
+int differentsNumbers() {
+	int ans = 0;
+	fore(i, 0, MAX) 
+		if(bucket[i] > 0) ans++;
+	return ans;
+}
+int deleteElement(int n, int dif) {
+	int ihave = bucket[n] - 1;
+	int ans = dif;
+	if(ihave == 0) {
+		ans = dif - 1;
+	} 
+	return ans;
+}
+void update(int n) {
+	bucket[n]--;
+}
 int main() {
 	optimizar_io
-	int n, k, l, r;
-	bool lcan, rcan;
+	int n, k;
 	cin >> n >> k;
 	vector<int> num(n, 0);
-	vector<int> ans(n, 0);
-	fore(i, 0, n) cin >> num[i];
-
-	lcan = true; rcan = true;
-	while(l < r) {
-		if(lcan) {
-
-		}
-		if(rcan) {
-
-		}
-		if(~(lcan && rcan)) {
-			
-		}
+	fore(i, 0, n) {
+		cin >> num[i];
+		bucket[num[i]]++;
 	}
-
-	if(k == 1) cout << "1 1" << endl;
-	else if((l < n) && (r < n) && (l >= 0) && (r >= 0)) {
-		cout << l + 1 << " " << r + 1<< endl;
-	} else cout << "-1 -1" << endl;
+	int differents = differentsNumbers();
+	if(differents >= k) {
+		int l = 0, r = num.size()-1;
+		int auxDif;
+		while(r >= l) {
+			auxDif = deleteElement(num[r], differents);
+			if(auxDif >= k) {
+				update(num[r]);
+				differents = auxDif;
+				r--;
+			} else break;
+		}
+		while(l < r) {
+			auxDif = deleteElement(num[l], differents);
+			if(auxDif >= k) {
+				update(num[l]);
+				differents = auxDif;
+				l++;
+			} else break;
+		}
+		cout << l+1 << " " << r+1 << endl;
+	} else {
+		cout << "-1 -1" << endl;
+	}
 
 }
