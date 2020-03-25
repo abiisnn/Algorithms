@@ -1,38 +1,42 @@
-// https://codeforces.com/contest/1272/problem/B
 #include<bits/stdc++.h>
 using namespace std;
+#define optimizar_io ios_base::sync_with_stdio(0); cin.tie(0);
+#define fore(i, a, b) for(int i = a; i < b; i++)
+#define fori(i, a, b) for(int i = a; i <= b; i++)
+#define pb push_back
+#define pf push_front
+#define popb pop_back
+#define mk make_pair
+#define f first
+#define s second
 #define endl '\n'
-#define N 100002
-#define optimizar_io ios_base::sync_with_stdio(0); 
+#define MAX 105
 typedef long long int lli;
 
 int main() {
+	optimizar_io
 	int q;
 	cin >> q;
 
 	while(q--) {
 		string s;
-		vector<int> v(4, 0);
 		cin >> s;
-		
-		for(int i = 0; i < s.size(); i++) {
-			if(s[i] == 'L') v[0]++;
-			else if(s[i] == 'R') v[1]++;
-			else if(s[i] == 'U') v[2]++;
-			else v[3]++;
-		}	
-		int x = min(v[0], v[1]);
-		int y = min(v[2], v[3]);
-
-		if((v[0] == v[1]) and (v[0] != 0)) x = 1;
-		if((v[2] == v[3]) and (v[2] != 0)) y = 1;
-		cout << (x * 2) + (y * 2) << endl;
-		for(int i = 0; i < x; i++) cout << "L";
-		for(int i = 0; i < x; i++) cout << "R";
-		for(int i = 0; i < y; i++) cout << "D";
-		for(int i = 0; i < y; i++) cout << "U";
-		
-		cout << endl;
+		map<char, int> bucket;
+		fore(i, 0, s.size()) {
+			bucket[s[i]]++;
+		}
+		int minLR = min(bucket['L'], bucket['R']);
+		int minUD = min(bucket['U'], bucket['D']); 	
+		if(minLR == 0 && minUD > 0) cout << 2 << endl << "UD" << endl;
+		else if(minUD == 0 && minLR > 0) cout << 2 << endl << "LR" << endl;
+		else {
+			cout << minLR * 2 + minUD * 2 << endl;
+			fore(i, 0, minLR) cout << "R";
+			fore(i, 0, minUD) cout << "U";
+			fore(i, 0, minLR) cout << "L";
+			fore(i, 0, minUD) cout << "D";
+			cout << endl;
+		}
  	}
 	return 0;
 }
