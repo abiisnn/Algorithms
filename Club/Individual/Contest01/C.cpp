@@ -66,17 +66,16 @@ int main() {
 		isee.pb(aux);
 	}
 	for(int i = ans.size()-1; i >= 0; i--) {
-		point A = ans[i];
-		point B = ans[i-1];
-		isee[i].insert(i);
-		for(int j = i-2; j >= 0; j--) {
-			dato orien = pointLine(B, A, ans[j]);
-			if(ge(orien, 0)) {
-				isee[i].insert(j+1);
-				B = ans[j];
+		point A = ans[i]; // Punto más a la derecha
+		point B = ans[i-1]; // Punto anterior al A
+		isee[i].insert(i); // Siempre veo al punto anterior, entonces su indice es i
+		for(int j = i-2; j >= 0; j--) { // Desde el punto antes de B, hasta el final
+			dato orien = pointLine(B, A, ans[j]); // Resultado que me dice si esta arriba o abajo
+			if(ge(orien, 0)) { // si esta arriba, su producto cruz sera positivo, o sea es mayor a 0
+				isee[i].insert(j+1);  // Quiere decir que lo puedo ver
+				B = ans[j]; // la recta sera ahora con este nuevo punto, actualizo B
 			} 
 		}
-
 	}
 	cout << 0 << endl;
 	for(int i = 1; i < isee.size(); i++) {
