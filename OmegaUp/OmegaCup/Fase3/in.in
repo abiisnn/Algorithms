@@ -1,0 +1,7 @@
+3
+2
+Integer estatura = new Integer("5");
+Integer edad = new Integer("55");
+Integer codigo = new Integer("66");
+estatura = edad;
+codigo = estatura;
