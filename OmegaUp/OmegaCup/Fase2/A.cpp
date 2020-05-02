@@ -19,16 +19,17 @@ int main() {
 	optimizar_io
 	lli w, n;
 	cin >> w >> n;
+	
 	bool ans = true;
 	set<int> s;
 	for(int i = 2; i <= n; i++) {
-		if(s.count(w % i)) {
+		if(s.count(w % i)) { // 1 ya esta
 			ans = false;
 			break;
 		}
-		s.insert(w%i);
+		s.insert(w % i);
 	}
-	if (!ans) {
-		cout << "No" << endl;
-	} else cout << "Si" << endl;
+	if (ans) {
+		cout << "Si" << endl;
+	} else cout << "No" << endl;
 }

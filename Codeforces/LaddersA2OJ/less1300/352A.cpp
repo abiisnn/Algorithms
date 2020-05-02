@@ -15,19 +15,20 @@ typedef long double ld;
 const double PI = acos(-1.0);
 ld eps = 1e-9;
 
-bool isBeutiful(lli n) {
-	string num = to_string(n);
-	fore(i, 0, num.size()) {
-		if((num[i] == '0') or (num[i] == '5')) continue;
-		else return false;
-	}
-	return true;
-}
-
 int main() {
 	optimizar_io
-	lli a = 90;
-	for(int i = 0; i < 10000; i++) {
-		if(isBeutiful(a*i)) cout << a*i << " ";
-	} 
+	int n = 0, num5 = 0, zeros = 0;
+	char aux;
+ 	cin >> n;
+ 	fore(i, 0, n) {
+ 		cin >> aux;
+ 		if(aux == '5') num5++;
+ 	}
+	zeros = n - num5;
+	if(num5 >= 9 && zeros >= 1){
+		fore(i, 0, 9*(num5/9)) cout << 5;
+		fore(i, 0, zeros) cout << 0;
+		cout << endl;
+	} else if(zeros >= 1) cout << 0 << endl;
+	else cout << "-1" << endl;
 }

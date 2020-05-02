@@ -1,46 +1,41 @@
-// https://codeforces.com/contest/1203/problem/E
 #include<bits/stdc++.h>
 using namespace std;
+#define optimizar_io ios_base::sync_with_stdio(0); cin.tie(0);
+#define fore(i, a, b) for(int i = a; i < b; i++)
+#define fori(i, a, b) for(int i = a; i <= b; i++)
 #define pb push_back
-#define mp make_pair
-#define MAX 10000005
+#define popb pop_back
+#define mk make_pair
+#define fi first
+#define se second
+#define endl '\n'
+#define MAX 60
 typedef long long int lli;
+typedef long double ld;
+const double PI = acos(-1.0);
+ld eps = 1e-9;
 
 int main() {
-	ios_base::sync_with_stdio(0); cin.tie(0);
-	lli n, a;
-	map<int, int> bucket;
-
+	optimizar_io
+	int n;
+	int last = 150005;
+	int ans = 0;
 	cin >> n;
-	vector<int> v(n, 0);
-	for(int i = 0; i < n; i++) {
-		cin >> v[i];
-		bucket[v[i]]++;
-		bucket[v[i] + 1]++;
-		bucket[v[i] - 1]++;
-	}
+	vector<int> aux(n);
+	fore(i, 0, n) cin >> aux[i];
+	sort(aux.begin(), aux.end());
 
-	set<int> exist;
-	for(int i = 0; i < n; i++) {
-		vector<pair<int, int>> noVisited;
-		// cout << "-----------------" << endl;
-		for(int j = v[i] - 1; j <= v[i] + 1; j++) {
-			set<int>::iterator it = exist.find(j);
-			// cout << "Buscando: " << j << endl;
-			if((it == exist.end()) && (j != 0)) { // Not Found
-				// cout << "No lo encontre" << endl;
-				noVisited.pb(mp(bucket[j], j));
-			}
+	for(int i = n-1; i>= 0; i--) {
+		if((aux[i] + 1) < last) {
+			last = aux[i] + 1;
+			ans++;
+		} else if(aux[i] < last) {
+			last = aux[i];
+			ans++;
+		} else if((aux[i] - 1) < last && (aux[i] -1) > 0) {
+			last = aux[i] - 1;
+			ans++;
 		}
-		if(noVisited.size()) {
-			sort(noVisited.begin(), noVisited.end());
-			exist.insert(noVisited[0].second);
-		} else continue;
 	}
-	// cout << endl << "SET" << endl;
-	// for(auto &i: exist) {
-	// 	cout << i << " ";
-	// }
-	// cout << endl;
-	cout << exist.size() << endl;
+	cout << ans << endl;
 }

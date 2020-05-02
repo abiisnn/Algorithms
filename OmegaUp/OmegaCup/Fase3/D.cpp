@@ -18,8 +18,6 @@ ld eps = 1e-9;
 vector<vector<int>> bus;
 int n, m;
 int busqueda(int i, int j, char dir) {
-	// cout << "hola: " << i << " " << j << endl;
-	// cout << "n: " << n << " m: " << m << endl;
 	if(i == (n-1) && j == (m-1)) return 1;
 	if(i >= n or j >= m) return 0;
 	if(i < 0 or j < 0) return 0;
@@ -72,7 +70,6 @@ int busqueda(int i, int j, char dir) {
 			j += 1;
 		}
 	}
-	// cout << "Voy a: " << i << " " << j << " dir: " << newDir << endl;
 	return busqueda(i, j, newDir);
 }
 

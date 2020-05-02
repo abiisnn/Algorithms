@@ -23,8 +23,6 @@ int main() {
 		char c = str[i];
 		if(c == 'A' or c == 'E' or c == 'I' or c == 'O' or c == 'U' or c == 'a' or c == 'e' or c == 'i' or c == 'o' or c == 'u') {
 			vocals++;
-		} else {
-			letras++;
 		}
 	}	
 	cout << str.size() << endl; 
@@ -32,5 +30,12 @@ int main() {
 	for(int i = str.size()-1; i >= 0; i--) {
 		cout << str[i];
 	} cout << endl;
+}
 
+struct Graph {
+	vector<vertex*> nodes;
+}
+struct vertex {
+	int a;
+	vector<vectex*> neih;
 }
