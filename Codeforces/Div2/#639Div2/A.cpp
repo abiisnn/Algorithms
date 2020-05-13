@@ -15,19 +15,14 @@ typedef long double ld;
 const double PI = acos(-1.0);
 ld eps = 1e-9;
 
- int main() {
- 	optimizar_io
-
- 	int N, M, K, v;
- 	cin >> N >> M >> K;
- 	int cont = 0;
- 	bool flag = false;
- 	fore(i, 0, N) {
- 		cin >> v;
- 		if(v > M) cont++;
- 		if(v == M) flag = true;
-  	}
-  	if(!flag && K == 0) cout << "NO" << endl;
-  	else if(cont > K) cout << "NO" << endl;
-  	else cout << "YES" << endl;
+int main() {
+	optimizar_io
+	int n, m, t;
+	cin >> t;
+	while(t--) {
+		cin >> n >> m;
+		if(n <= 2 && m <= 2) cout << "YES" << endl;
+		else if(n == 1 or m == 1) cout << "YES" << endl;
+		else cout << "NO" << endl;	
+	}
 }

@@ -9,25 +9,27 @@ using namespace std;
 #define fi first
 #define se second
 #define endl '\n'
-#define MAX 60
+#define MAX 1000005
 typedef long long int lli;
 typedef long double ld;
 const double PI = acos(-1.0);
 ld eps = 1e-9;
 
- int main() {
- 	optimizar_io
+int main() {
+	optimizar_io
+	int n, m;
+	cin >> n >> m;
+	vector<int> v(n);
+	fore(i, 0, n) cin >> v[i];
 
- 	int N, M, K, v;
- 	cin >> N >> M >> K;
- 	int cont = 0;
- 	bool flag = false;
- 	fore(i, 0, N) {
- 		cin >> v;
- 		if(v > M) cont++;
- 		if(v == M) flag = true;
-  	}
-  	if(!flag && K == 0) cout << "NO" << endl;
-  	else if(cont > K) cout << "NO" << endl;
-  	else cout << "YES" << endl;
+	set<int> aux;
+	vector<int> ans(n);
+	for(int i = n-1; i >= 0; i--) {
+		aux.insert(v[i]);
+		ans[i] = aux.size();
+	}
+	fore(i, 0, m) {
+		cin >> n;
+		cout << ans[n-1] << endl;
+	}
 }

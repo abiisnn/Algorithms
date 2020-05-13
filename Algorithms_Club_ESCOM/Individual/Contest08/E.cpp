@@ -15,19 +15,31 @@ typedef long double ld;
 const double PI = acos(-1.0);
 ld eps = 1e-9;
 
- int main() {
- 	optimizar_io
+bool isVowel(char a) {
+	if(a == 'a' or a == 'e' or a == 'i' or a == 'o' or a == 'u' or a == 'y') {
+		return true;
+	}
+	return false;
+}
 
- 	int N, M, K, v;
- 	cin >> N >> M >> K;
- 	int cont = 0;
- 	bool flag = false;
- 	fore(i, 0, N) {
- 		cin >> v;
- 		if(v > M) cont++;
- 		if(v == M) flag = true;
-  	}
-  	if(!flag && K == 0) cout << "NO" << endl;
-  	else if(cont > K) cout << "NO" << endl;
-  	else cout << "YES" << endl;
+int main() {
+	optimizar_io
+	int n;
+	cin >> n;
+	string str;
+	cin >> str;
+	int vowel = 0;
+	string ans = "";
+	fore(i, 0, str.size()) {
+		if(isVowel(str[i])) {
+			vowel++;
+			if(vowel == 1) {
+				ans += str[i];
+			}
+		} else {
+			ans += str[i];
+			vowel = 0;
+		}
+	}
+	cout << ans << endl;
 }

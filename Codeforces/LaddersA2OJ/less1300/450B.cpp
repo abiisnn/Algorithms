@@ -9,25 +9,23 @@ using namespace std;
 #define fi first
 #define se second
 #define endl '\n'
-#define MAX 60
+#define MOD 1000000007
 typedef long long int lli;
 typedef long double ld;
 const double PI = acos(-1.0);
 ld eps = 1e-9;
-
- int main() {
- 	optimizar_io
-
- 	int N, M, K, v;
- 	cin >> N >> M >> K;
- 	int cont = 0;
- 	bool flag = false;
- 	fore(i, 0, N) {
- 		cin >> v;
- 		if(v > M) cont++;
- 		if(v == M) flag = true;
-  	}
-  	if(!flag && K == 0) cout << "NO" << endl;
-  	else if(cont > K) cout << "NO" << endl;
-  	else cout << "YES" << endl;
+lli mod(lli a, lli b) { 
+	return (b + (a % b)) % b; 
+}
+int main() {
+	optimizar_io
+	lli x, y, n;
+	cin >> x >> y >> n;
+	lli ans[6];
+	lli lessOne = -1;
+	x = mod(x, MOD), y = mod(y, MOD);
+	ans[0] = mod(x, MOD), ans[1] = mod(y, MOD), ans[2] = mod(y - x, MOD);
+	ans[3] =  mod(lessOne*x, MOD), ans[4] = mod(lessOne*y, MOD);
+	ans[5] = mod(-y+x, MOD);
+	cout << ans[(n-1)%6] << endl;;
 }
