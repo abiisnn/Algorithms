@@ -12,7 +12,7 @@ int main() {
 	cin >> tc;
 	while(tc--) {
 		cin >> K;
-		vector<pair<int, int>> v;
+		vector<pair<char, int>> v;
 		vector<int> ascii(257, 0);
 		for(i = 0; i < K; i++) {
 			cin >> c >> number;
@@ -21,9 +21,10 @@ int main() {
 		cin >> M; cin.ignore();
 	    for(i = 0; i < M; i++) {
 	    	getline(cin, line);
-	    	for(j = 0; j <= line.length(); j++)
-	    		ascii[line[j]]++;
-	    	cout << endl;
+	    	for(j = 0; j <= line.length(); j++) {
+	    		if(line[j] <= 127 && line[j] >= 0)
+	    			ascii[line[j]]++;
+	    	}
 	    }
 	    double amount = 0, aux = 0;
 	    for(i = 0; i < K; i++) {
@@ -32,7 +33,7 @@ int main() {
 	    	amount += (aux * v[i].second); 
 	    }
 	    amount /= 100; 
-	    printf("%.2lf$", amount);
-	    cout << endl;
+	    cout << setprecision(2) << fixed;
+	    cout << amount << "$"<< endl;
 	}
 }

@@ -16,18 +16,19 @@ const double PI = acos(-1.0);
 ld eps = 1e-9;
 
 int main() {
-	int n, m; cin >> n >> m;
-	vector<int> v(m);
-	fore(i, 0, m) cin >> v[i];
-
-	int last = 1;
-	lli sum = 0;
-	fore(i, 0, m) {
-		if(v[i] == last) continue;
-		if(v[i] < last) {
-			sum += (n - last) + v[i];
-		} else sum += v[i] - last;
-		last = v[i];
+	optimizar_io
+	int a, b, t; cin >> t;
+	while(t--) {
+		cin >> a >> b;
+		int op1 = 100000, op2 = 100000, op3 = 100000, op4 = 100000;
+	
+		if((a+a) >= (b)) op1 = (a+a) * (a+a);
+		if((b+b) >= (a)) op2 = (b+b) * (b+b);
+		if(b >= (a+a)) op3 = b * b;
+		if(a >= (b+b)) op4 = a * a;
+		// cout << op1 << " " << op2 << endl;
+		// cout << op3 << " " << op4 << endl;
+		cout << std::min(std::min(op1, op4),std::min(op2, op3)) << endl;
 	}
-	cout << sum << endl;
+	
 }

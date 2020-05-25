@@ -38,5 +38,4 @@ int main() {
 		fore(j, 0, aux[i].size()) cout << aux[i][j];
 		if(i != 0) cout << endl;
 	}
-
 }

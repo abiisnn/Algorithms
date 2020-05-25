@@ -28,7 +28,7 @@ int lowerBound(vector<pair<lli, int>> &a, int l, int r, lli target) { // O(log(n
 	return ans;
 }
 void findLow(vector<pair<lli, int>>&dif, lli d, lli &res1, lli &res2, lli &minD, int mask) {
-	int index = lowerBound(dif, 0, dif.size(), -d);
+	int index = lowerBound(dif, 0, dif.size()-1, -d);
 	int inicio = index-10, fin = index+10;
 	if(index-10 <0) inicio = 0;
 	if(index+10 > dif.size()) fin = dif.size();

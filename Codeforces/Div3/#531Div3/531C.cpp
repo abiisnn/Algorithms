@@ -15,19 +15,23 @@ typedef long double ld;
 const double PI = acos(-1.0);
 ld eps = 1e-9;
 
-int main() {
-	int n, m; cin >> n >> m;
-	vector<int> v(m);
-	fore(i, 0, m) cin >> v[i];
-
-	int last = 1;
-	lli sum = 0;
-	fore(i, 0, m) {
-		if(v[i] == last) continue;
-		if(v[i] < last) {
-			sum += (n - last) + v[i];
-		} else sum += v[i] - last;
-		last = v[i];
+int main(int argc, char const *argv[]) {
+	optimizar_io
+	int n, x, y, aux;
+	cin >> n >> x >> y;
+	vector<int> v;
+	int men = 0;
+	fore(i, 0, n) {
+		cin >> aux;
+		if(aux <= x) {
+			men++;
+		} else v.pb(aux);
 	}
-	cout << sum << endl;
+
+	int ans = men / 2;
+	if(men & 1) ans++;
+	if(v.size() != 0 && (x > y)) ans++;
+	if(x > y) ans = n;
+	cout << ans << endl;
+	return 0;
 }

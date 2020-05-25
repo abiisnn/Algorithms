@@ -16,18 +16,12 @@ const double PI = acos(-1.0);
 ld eps = 1e-9;
 
 int main() {
-	int n, m; cin >> n >> m;
-	vector<int> v(m);
-	fore(i, 0, m) cin >> v[i];
+	optimizar_io
+	lli n;
+	cin >> n;
 
-	int last = 1;
-	lli sum = 0;
-	fore(i, 0, m) {
-		if(v[i] == last) continue;
-		if(v[i] < last) {
-			sum += (n - last) + v[i];
-		} else sum += v[i] - last;
-		last = v[i];
-	}
-	cout << sum << endl;
+	lli gauss =  (n * (n+1)) / 2;
+	if(gauss & 1) {
+		cout << 1 << endl;
+	} else cout << 0 << endl;
 }

@@ -16,18 +16,16 @@ const double PI = acos(-1.0);
 ld eps = 1e-9;
 
 int main() {
-	int n, m; cin >> n >> m;
-	vector<int> v(m);
-	fore(i, 0, m) cin >> v[i];
-
-	int last = 1;
-	lli sum = 0;
-	fore(i, 0, m) {
-		if(v[i] == last) continue;
-		if(v[i] < last) {
-			sum += (n - last) + v[i];
-		} else sum += v[i] - last;
-		last = v[i];
+	optimizar_io
+	int t;
+	cin >> t;
+	lli n, a, b;
+	while(t--) {
+		cin >> n >> a >> b;
+		lli comprarA = n * a;
+		lli aux = n / 2;
+		lli one = n % 2;
+		lli comprarB = (aux * b) + (one * a);
+		cout << std::min(comprarA, comprarB) << endl;
 	}
-	cout << sum << endl;
 }

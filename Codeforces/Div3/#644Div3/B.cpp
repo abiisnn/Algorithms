@@ -16,18 +16,22 @@ const double PI = acos(-1.0);
 ld eps = 1e-9;
 
 int main() {
-	int n, m; cin >> n >> m;
-	vector<int> v(m);
-	fore(i, 0, m) cin >> v[i];
-
-	int last = 1;
-	lli sum = 0;
-	fore(i, 0, m) {
-		if(v[i] == last) continue;
-		if(v[i] < last) {
-			sum += (n - last) + v[i];
-		} else sum += v[i] - last;
-		last = v[i];
+	int t, n;
+	cin >> t;
+	while(t--) {
+		cin >> n;
+		vector<int> num(n);
+		map<int, int> buck;
+		fore(i, 0, n) {
+			cin >> num[i];
+			buck[num[i]]++;
+		}
+		int mindif = 100000;
+		sort(num.begin(), num.end());
+		fore(i, 0, num.size()-1) {
+			int dif = abs(num[i+1] - num[i]);
+			if(dif < mindif) mindif = dif;
+		}
+		cout << mindif << endl;
 	}
-	cout << sum << endl;
 }
