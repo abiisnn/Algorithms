@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 using namespace std;
 #define optimizar_io ios_base::sync_with_stdio(0); cin.tie(0);
@@ -39,11 +38,13 @@ int main() {
 		bool flag = true;
 		fore(i, 0, n) {
 			fore(j, 0, n) {
-				if(matrix[i][j] == '1' && check(matrix, i, j)) continue;
-				else {
-					flag = false;
-					break;
-				} 
+				if(matrix[i][j] == '1') {
+					if(check(matrix, i, j)) continue;
+					else {
+						flag = false;
+						break;
+					} 
+				}
 			}
 		}
 		if(flag) cout << "YES" << endl;

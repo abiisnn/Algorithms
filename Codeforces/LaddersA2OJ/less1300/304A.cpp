@@ -9,7 +9,7 @@ using namespace std;
 #define fi first
 #define se second
 #define endl '\n'
-#define MAX 300
+#define MAX 102
 typedef long long int lli;
 typedef long double ld;
 const double PI = acos(-1.0);
@@ -39,13 +39,9 @@ int main() {
 	cin >> n;
 	vector<lli> v(MAX);
 	for(lli i = 1; i < MAX; i++) v[i] = i*i;
-	for(int i = 1; i < MAX; i++) 
-		bucket[v[i]]++;
- 
-	/* Search if there are a pair of a and b 
-	where a + b = c*/
-	for(int i = 1; i < MAX; i++) {
-		isPythagoreanTriplet(v, v[i]);
+	fore(i, 0, MAX) {
+		cout << v[i] << " ";
 	}
-	cout << aux.size() << endl;
+	cout << endl;
+	
 }
