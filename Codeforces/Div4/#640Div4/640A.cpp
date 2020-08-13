@@ -20,13 +20,12 @@ int pot(int n) {
 	for(int i = 0; i < n; i++) ans *= 10;
 	return ans;
 }
-
 void solve(int n) {
 	vector<int> num;
 	int i = 0;
-	while(n) {
-		int aux = n % 10;
-		if(aux != 0) {
+	while(n) { // recorrer derecha-izq
+		int aux = n % 10; // 1, 10, 100, 1000
+		if(aux) { 
 			aux *= pot(i); 
 			num.pb(aux);
 		}
@@ -49,6 +48,5 @@ int main() {
 		cin >> n;
 		solve(n);
 	}
-
 
 }

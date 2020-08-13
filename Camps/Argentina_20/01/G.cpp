@@ -71,7 +71,7 @@ bool check(int u, lli actual, lli k) {
 }
 int main() {
 	optimizar_io
-	lli k;
+	lli k;z
 	int n, u, v;
 	cin >> n >> k;
 	fore(i, 0, n-1) {

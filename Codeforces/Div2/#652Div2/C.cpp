@@ -25,13 +25,11 @@ void solve() {
 	sort(all(a)); sort(all(w));
 	reverse(all(w));
 	lli ans = 0;
-	for(int i = 0, j = 0; i <= n-k; i += w[j]-1) {
-		cout << a[i] << endl;
+	for(int i = 0, j = 0; i < n-k; i += w[j]-1, j++) ans += a[i];
+	
+	for(int i = n-k, j = 0; i < n; i++, j++) {
 		ans += a[i];
-	}
-	for(int i = n-k+1; i < n; i++) {
-		ans += a[i];
-		if(!(w[i]-1)) ans += a[i];
+		if(!(w[j]-1)) ans += a[i];
 	}
 	cout << ans << endl;
 }

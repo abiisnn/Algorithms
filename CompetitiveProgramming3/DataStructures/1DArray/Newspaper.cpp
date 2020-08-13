@@ -21,7 +21,7 @@ int main() {
 		cin >> M; cin.ignore();
 	    for(i = 0; i < M; i++) {
 	    	getline(cin, line);
-	    	for(j = 0; j <= line.length(); j++) {
+	    	for(j = 0; j < line.length(); j++) {
 	    		if(line[j] <= 127 && line[j] >= 0)
 	    			ascii[line[j]]++;
 	    	}

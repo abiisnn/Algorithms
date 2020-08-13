@@ -9,7 +9,7 @@ int upperBound(vector<int> &v, int target) {
 		else if(v[m] > target) r = m - 1;
 		else l = m + 1;
 	}
-	if(l >= v.size()) return v.size();
+	// if(l >= v.size()) return v.size();
 	return l;
 }
 int lowerBound(vector<int> &v, int target) {
@@ -20,7 +20,7 @@ int lowerBound(vector<int> &v, int target) {
 		else if(v[m] > target) r = m - 1;
 		else r = m - 1;
 	}
-	if(l >= v.size()) return v.size();
+	// if(l >= v.size()) return v.size();
 	return l;
 }
 
