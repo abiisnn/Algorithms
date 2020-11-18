@@ -20,7 +20,7 @@ void solve() {
 	string s; cin >> n >> s;
 	vector<int> ans(n);
 	queue<int> zero, one;
-	int total = 0;
+	int total = 0; // num subsequencias
 	fore(i, 0, n) {
 		if(s[i] == '0') {
 			if(!one.empty()) {

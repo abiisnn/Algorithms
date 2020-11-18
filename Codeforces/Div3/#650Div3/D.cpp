@@ -23,11 +23,14 @@ void solve() {
 	queue<int> zeros;
 	
 	fore(i, 0, m) cin >> b[i];
-	fore(i, 0, s.size()) bucket[s[i] - 'a']++;
+	fore(i, 0, s.size()) bucket[s[i] - 'a']++; // creando cubeta
+
 	string ans(m, ' ');
 	int pointer = bucket.size() - 1;
+	
 	while(1) {
 		fore(i, 0, m) if(!b[i]) zeros.push(i);
+		
 		if(!zeros.size()) break;
 		while(bucket[pointer] < zeros.size()) {pointer--;}
 		

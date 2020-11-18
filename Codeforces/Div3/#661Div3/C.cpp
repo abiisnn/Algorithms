@@ -17,7 +17,8 @@ ld eps = 1e-9;
 
 int check(map<int, int> &bucket, int n) {
 	int ans = 0;
-	fore(i, 1, n/2 + 1) {
+	// O(n)
+	fore(i, 1, n/2 + 1) { // c = a + b -> a = c - b
 		int aux1 = bucket[i];
 		int aux2 = bucket[n-i];
 		if(i == n-i) ans += (aux1 / 2);
@@ -33,18 +34,9 @@ void solve() {
 		cin >> v[i];
 		bucket[v[i]]++;
 	}
-	sort(v.begin(), v.end());
-
-	if(v.size() == 1) {
-		cout << 0 << endl;
-		return;
-	}
-	int minS = v[0] + v[1];
-	int maxs = v[v.size()-1] + v[v.size()-2];
-
 	int ans = 0;
-	fori(i, minS, maxs) {
-		ans = std::max(check(bucket, i), ans);
+	fori(i, 0, 100) { // 0 - 100 // O(n^2)
+		ans = std::max(check(bucket, i), ans); // O(n)
 	} 
 	cout << ans << endl;
 }
