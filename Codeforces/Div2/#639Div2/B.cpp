@@ -45,6 +45,8 @@ lli solve(lli n) {
 int main() {
 	optimizar_io
 	for(lli i = 0; i < MAX; i++) a[i] = cards(i);
+	for(lli i = 0; i < 20; i++) cout << a[i] << " ";
+		cout << endl;
 
 	int t;
 	lli n;

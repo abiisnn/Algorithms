@@ -10,30 +10,31 @@ using namespace std;
 #define fi first
 #define se second
 #define endl '\n'
-#define MAX 300001
+#define MAX 300005
+#define INI 1000000000005
 typedef long long int lli;
 typedef long double ld;
 const double PI = acos(-1.0);
 ld eps = 1e-9;
-vector<lli> odd(MAX), even(MAX);
+vector<vector<lli>> mem(MAX, vector<lli>(2, 0));
+vector<vector<bool>> visited(MAX, vector<bool>(2, false));
+vector<lli> a(MAX);
 
 void clear() {
-	fore(i, 0, MAX) odd[i] = 0;
-	fore(i, 0, MAX) even[i] = 0;
+	fore(i, 0, MAX) mem[i][0] = mem[i][1] = 0;
+	fore(i, 0, MAX) visited[i][0] = visited[i][1] = false;
 }
 lli dp(int n, int index, int time) {
 	if(index >= n) return 0;
-	if(time & 1) {
-		total -= a[index];
-	} else {
-		total += a[index];
-	}
-	lli take = total + dp(n, index + 1, time++);
-	lli noTake = total 
+	if(visited[index][time & 1]) return mem[index][time & 1];	
+	lli take = dp(n, index+1, time+1), noTake = dp(n, index+1, time);
+	
+	visited[index][time & 1] = true;
+	mem[index][time & 1] = max(((time & 1) ? -a[index]: a[index]) + take, noTake);
+	return mem[index][time & 1];
 }
 void solve() {
 	int n, q; cin >> n >> q;
-	vector<int> a(n);
 	fore(i, 0, n) cin >> a[i];
 	clear();
 	cout << dp(n, 0, 0) << endl;

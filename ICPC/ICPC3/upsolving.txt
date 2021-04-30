@@ -1,0 +1,7 @@
+E. Busca la mejor respuesta desde el más pequeño al mas grande.
+H. Bits, relativamente facil pero lectura larga
+
+G, A, N: DP
+M: Greedy
+K: Combinatoria
+F: Backtraking
